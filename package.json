@@ -1,0 +1,10 @@
+{
+  "name": "songapp",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
