@@ -1,23 +1,23 @@
 const SONGS = [
-  { id: "kacheri", title: "Kacheri", artist: "Anirudh Ravichander", cover: "assets/covers/kacheri.jpg" },
-  { id: "maduraikku", title: "Maduraikku", artist: "Vijay Antony", cover: "assets/covers/maduraikku.jpg" },
-  { id: "oru-pere", title: "Oru Pere", artist: "Anirudh Ravichander", cover: "assets/covers/oru-pere.jpg" },
-  { id: "raavana", title: "Raavana Mavanda", artist: "Anirudh Ravichander", cover: "assets/covers/raavana.jpg" },
-  { id: "2000s-fast-beat", title: "2000s Fast Beat", artist: "Various Artists", cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&q=80" },
-  { id: "otha-sollaala", title: "Otha Sollaala", artist: "Vijay Antony", cover: "assets/covers/otha-sollaala.jpg" },
-  { id: "chella-kutti", title: "Chella Kutti", artist: "Anirudh Ravichander", cover: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=500&q=80" },
-  { id: "yaar-indha-saalai-oram", title: "Yaar Indha Saalai Oram", artist: "Vijay Antony", cover: "https://images.unsplash.com/photo-1459749411177-042180ce673c?w=500&q=80" },
-  { id: "en-kannu-kulla", title: "En Kannu Kulla", artist: "Vijay Antony", cover: "assets/covers/en-kannu-kulla.jpg" },
-  { id: "sirukki-vaasam", title: "Sirukki Vaasam", artist: "Anirudh Ravichander", cover: "assets/covers/sirukki-vaasam.jpg" },
-  { id: "sivappu-manjal-pachai", title: "Sivappu Manjal Pachai", artist: "Santhosh Narayanan", cover: "https://images.unsplash.com/photo-1514525253344-f814d0746b55?w=500&q=80" },
-  { id: "aaruyirae", title: "Aaruyirae", artist: "A.R. Rahman", cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&q=80" },
-  { id: "thangapoovey", title: "Thangapoovey", artist: "Anirudh Ravichander", cover: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500&q=80" },
-  { id: "marandhu-poche", title: "Marandhu Poche", artist: "Sean Roldan", cover: "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=500&q=80" },
-  { id: "venmegam", title: "Venmegam", artist: "Yuvanshankar Raja", cover: "https://images.unsplash.com/photo-1453090927415-5f45085b65c0?w=500&q=80" },
-  { id: "pavazha-malli", title: "Pavazha Malli", artist: "Sai Abhyankkar", cover: "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=500&q=80" },
-  { id: "kanmoodi-thirakumbothu", title: "Kanmoodi Thirakumbothu", artist: "Devi Sri Prasad", cover: "https://images.unsplash.com/photo-1501612722-794014848490?w=500&q=80" },
-  { id: "sidu-sidu", title: "Sidu Sidu", artist: "Vijay Antony", cover: "https://images.unsplash.com/photo-1420161907993-e298aa95a479?w=500&q=80" },
-  { id: "annul-maelae", title: "Annul Maelae", artist: "Harris Jayaraj", cover: "https://images.unsplash.com/photo-1526218626217-dc65a29bb444?w=500&q=80" },
+  { id: "kacheri", title: "Kacheri", artist: "Anirudh Ravichander", cover: "assets/covers/kacheri.jpg", category: "vijay" },
+  { id: "maduraikku", title: "Maduraikku", artist: "Vijay Antony", cover: "assets/covers/maduraikku.jpg", category: "vijay" },
+  { id: "oru-pere", title: "Oru Pere", artist: "Anirudh Ravichander", cover: "assets/covers/oru-pere.jpg", category: "love" },
+  { id: "raavana", title: "Raavana Mavanda", artist: "Anirudh Ravichander", cover: "assets/covers/raavana.jpg", category: "vijay" },
+  { id: "2000s-fast-beat", title: "2000s Fast Beat", artist: "Various Artists", cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&q=80", category: "vijay" },
+  { id: "otha-sollaala", title: "Otha Sollaala", artist: "Vijay Antony", cover: "assets/covers/otha-sollaala.jpg", category: "vijay" },
+  { id: "chella-kutti", title: "Chella Kutti", artist: "Anirudh Ravichander", cover: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=500&q=80", category: "love" },
+  { id: "yaar-indha-saalai-oram", title: "Yaar Indha Saalai Oram", artist: "Vijay Antony", cover: "https://images.unsplash.com/photo-1459749411177-042180ce673c?w=500&q=80", category: "love" },
+  { id: "en-kannu-kulla", title: "En Kannu Kulla", artist: "Vijay Antony", cover: "assets/covers/en-kannu-kulla.jpg", category: "love" },
+  { id: "sirukki-vaasam", title: "Sirukki Vaasam", artist: "Anirudh Ravichander", cover: "assets/covers/sirukki-vaasam.jpg", category: "love" },
+  { id: "sivappu-manjal-pachai", title: "Sivappu Manjal Pachai", artist: "Santhosh Narayanan", cover: "https://images.unsplash.com/photo-1514525253344-f814d0746b55?w=500&q=80", category: "vijay" },
+  { id: "aaruyirae", title: "Aaruyirae", artist: "A.R. Rahman", cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&q=80", category: "love" },
+  { id: "thangapoovey", title: "Thangapoovey", artist: "Anirudh Ravichander", cover: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500&q=80", category: "love" },
+  { id: "marandhu-poche", title: "Marandhu Poche", artist: "Sean Roldan", cover: "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=500&q=80", category: "love" },
+  { id: "venmegam", title: "Venmegam", artist: "Yuvanshankar Raja", cover: "https://images.unsplash.com/photo-1453090927415-5f45085b65c0?w=500&q=80", category: "love" },
+  { id: "pavazha-malli", title: "Pavazha Malli", artist: "Sai Abhyankkar", cover: "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=500&q=80", category: "love" },
+  { id: "kanmoodi-thirakumbothu", title: "Kanmoodi Thirakumbothu", artist: "Devi Sri Prasad", cover: "https://images.unsplash.com/photo-1501612722-794014848490?w=500&q=80", category: "love" },
+  { id: "sidu-sidu", title: "Sidu Sidu", artist: "Vijay Antony", cover: "https://images.unsplash.com/photo-1420161907993-e298aa95a479?w=500&q=80", category: "vijay" },
+  { id: "annul-maelae", title: "Annul Maelae", artist: "Harris Jayaraj", cover: "https://images.unsplash.com/photo-1526218626217-dc65a29bb444?w=500&q=80", category: "love" },
 ];
 
 const audio = document.getElementById("audioPlayer");
@@ -48,6 +48,7 @@ let currentIndex = -1;
 let isPlaying = false;
 let volume = 1;
 let searchQuery = "";
+let currentCategory = "all";
 
 function formatTime(s) {
   if (!s || isNaN(s)) return "0:00";
@@ -58,6 +59,9 @@ function formatTime(s) {
 
 function getFilteredSongs() {
   let list = SONGS;
+  if (currentCategory !== "all") {
+    list = list.filter(s => s.category === currentCategory);
+  }
   if (searchQuery) {
     const q = searchQuery.toLowerCase();
     list = list.filter(s => s.title.toLowerCase().includes(q) || s.artist.toLowerCase().includes(q));
@@ -218,6 +222,16 @@ function init() {
   searchInput.addEventListener("input", () => {
     searchQuery = searchInput.value.trim();
     renderPlaylist();
+  });
+
+  const catBtns = document.querySelectorAll(".cat-btn");
+  catBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      catBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentCategory = btn.dataset.category;
+      renderPlaylist();
+    });
   });
 
   audio.addEventListener("loadedmetadata", () => { totalTimeEl.textContent = formatTime(audio.duration); });
