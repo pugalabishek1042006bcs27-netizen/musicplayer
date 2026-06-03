@@ -128,7 +128,7 @@ function selectSong(index) {
 
   const amazonBtn = document.getElementById("amazonLink");
   if (amazonBtn) {
-    amazonBtn.href = "https://www.amazon.com/s?k=" + encodeURIComponent(song.title + " " + song.artist) + "&tag=musicplayer0a-20";
+    amazonBtn.href = "https://www.amazon.com/gp/search?ie=UTF8&tag=musicplayer0a-20&keywords=" + encodeURIComponent(song.title + " " + song.artist);
     amazonBtn.style.display = "inline-flex";
   }
 }
