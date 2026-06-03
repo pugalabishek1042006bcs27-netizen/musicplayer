@@ -25,12 +25,10 @@ const playlistEl = document.getElementById("playlist");
 const songCount = document.getElementById("songCount");
 const searchInput = document.getElementById("searchInput");
 
-// Main content selectors
 const albumArt = document.getElementById("albumArt");
 const songTitle = document.getElementById("songTitle");
 const songArtist = document.getElementById("songArtist");
 
-// Player bar selectors
 const miniArt = document.getElementById("miniArt");
 const miniTitle = document.getElementById("miniTitle");
 const miniArtist = document.getElementById("miniArtist");
@@ -106,11 +104,8 @@ function selectSong(index) {
   currentIndex = index;
   const song = SONGS[index];
 
-  // Update main view
   songTitle.textContent = song.title;
   songArtist.textContent = song.artist;
-
-  // Update mini info
   miniTitle.textContent = song.title;
   miniArtist.textContent = song.artist;
 
@@ -129,7 +124,13 @@ function selectSong(index) {
   progressFill.style.width = "0%";
   currentTimeEl.textContent = "0:00";
   totalTimeEl.textContent = "0:00";
-    renderPlaylist();`n`n  const amazonBtn = document.getElementById("amazonLink");`n  if (amazonBtn) {`n    amazonBtn.href = "https://www.amazon.com/s?k=" + encodeURIComponent(song.title + " " + song.artist) + "&tag=musicplayer0a-20";`n    amazonBtn.style.display = "inline-flex";`n  }
+  renderPlaylist();
+
+  const amazonBtn = document.getElementById("amazonLink");
+  if (amazonBtn) {
+    amazonBtn.href = "https://www.amazon.com/s?k=" + encodeURIComponent(song.title + " " + song.artist) + "&tag=musicplayer0a-20";
+    amazonBtn.style.display = "inline-flex";
+  }
 }
 
 function songPick(index) {
@@ -202,7 +203,7 @@ function setVolume(e) {
 }
 
 function init() {
-    renderPlaylist();`n`n  const amazonBtn = document.getElementById("amazonLink");`n  if (amazonBtn) {`n    amazonBtn.href = "https://www.amazon.com/s?k=" + encodeURIComponent(song.title + " " + song.artist) + "&tag=musicplayer0a-20";`n    amazonBtn.style.display = "inline-flex";`n  }
+  renderPlaylist();
   selectSong(0);
   volumeFill.style.width = "100%";
   audio.volume = 1;
@@ -216,7 +217,7 @@ function init() {
 
   searchInput.addEventListener("input", () => {
     searchQuery = searchInput.value.trim();
-      renderPlaylist();`n`n  const amazonBtn = document.getElementById("amazonLink");`n  if (amazonBtn) {`n    amazonBtn.href = "https://www.amazon.com/s?k=" + encodeURIComponent(song.title + " " + song.artist) + "&tag=musicplayer0a-20";`n    amazonBtn.style.display = "inline-flex";`n  }
+    renderPlaylist();
   });
 
   audio.addEventListener("loadedmetadata", () => { totalTimeEl.textContent = formatTime(audio.duration); });
@@ -234,10 +235,9 @@ function init() {
   });
   audio.addEventListener("pause", () => { 
     isPlaying = false; 
-    playIcon.style.display = "block";
+    playIcon.style.display = "block"; 
     pauseIcon.style.display = "none";
   });
 }
 
 window.addEventListener("DOMContentLoaded", init);
-
