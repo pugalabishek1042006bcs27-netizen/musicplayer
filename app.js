@@ -24,20 +24,27 @@ const audio = document.getElementById("audioPlayer");
 const playlistEl = document.getElementById("playlist");
 const songCount = document.getElementById("songCount");
 const searchInput = document.getElementById("searchInput");
+
+// Main content selectors
 const albumArt = document.getElementById("albumArt");
 const songTitle = document.getElementById("songTitle");
 const songArtist = document.getElementById("songArtist");
+
+// Player bar selectors
+const miniArt = document.getElementById("miniArt");
+const miniTitle = document.getElementById("miniTitle");
+const miniArtist = document.getElementById("miniArtist");
 const progressFill = document.getElementById("progressFill");
 const progressTrack = document.getElementById("progressTrack");
 const currentTimeEl = document.getElementById("currentTime");
 const totalTimeEl = document.getElementById("totalTime");
 const btnPlay = document.getElementById("btnPlay");
+const playIcon = document.getElementById("playIcon");
+const pauseIcon = document.getElementById("pauseIcon");
 const btnPrev = document.getElementById("btnPrev");
 const btnNext = document.getElementById("btnNext");
 const volumeFill = document.getElementById("volumeFill");
 const volumeTrack = document.getElementById("volumeTrack");
-const volumePct = document.getElementById("volumePct");
-const volumeIcon = document.getElementById("volumeIcon");
 
 let currentIndex = -1;
 let isPlaying = false;
@@ -65,7 +72,7 @@ function renderPlaylist() {
   songCount.textContent = `${list.length} of ${SONGS.length} songs`;
 
   if (list.length === 0) {
-    playlistEl.innerHTML = "<div class='empty'>No songs found</div>";
+    playlistEl.innerHTML = "<div class='empty' style='padding: 20px; color: #b3b3b3;'>No songs found</div>";
     return;
   }
 
@@ -73,7 +80,7 @@ function renderPlaylist() {
     const coverSrc = song.cover ? `assets/covers/${song.cover}` : null;
     const cover = coverSrc
       ? `<img src="${coverSrc}" alt="${song.title}" loading="lazy" />`
-      : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16" opacity="0.4"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>`;
+      : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20" opacity="0.4"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>`;
     const isActive = SONGS.indexOf(song) === currentIndex;
     return `
       <div class="playlist-item ${isActive ? "active" : ""}" data-id="${song.id}">
@@ -99,14 +106,22 @@ function selectSong(index) {
   currentIndex = index;
   const song = SONGS[index];
 
+  // Update main view
   songTitle.textContent = song.title;
   songArtist.textContent = song.artist;
+
+  // Update mini info
+  miniTitle.textContent = song.title;
+  miniArtist.textContent = song.artist;
 
   const coverSrc = song.cover ? `assets/covers/${song.cover}` : null;
   if (coverSrc) {
     albumArt.innerHTML = `<img src="${coverSrc}" alt="${song.title}" />`;
+    miniArt.innerHTML = `<img src="${coverSrc}" alt="${song.title}" />`;
   } else {
-    albumArt.innerHTML = `<div class="album-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div>`;
+    const placeholder = `<div class="album-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div>`;
+    albumArt.innerHTML = placeholder;
+    miniArt.innerHTML = placeholder;
   }
 
   audio.src = `assets/audio/${song.id}.mp3`;
@@ -127,16 +142,19 @@ function play() {
   if (currentIndex < 0) { selectSong(0); }
   if (!audio.src) return;
   isPlaying = true;
-  btnPlay.textContent = "⏸";
+  playIcon.style.display = "none";
+  pauseIcon.style.display = "block";
   audio.play().catch(() => {
     isPlaying = false;
-    btnPlay.textContent = "▶";
+    playIcon.style.display = "block";
+    pauseIcon.style.display = "none";
   });
 }
 
 function pause() {
   isPlaying = false;
-  btnPlay.textContent = "▶";
+  playIcon.style.display = "block";
+  pauseIcon.style.display = "none";
   audio.pause();
 }
 
@@ -181,8 +199,6 @@ function setVolume(e) {
   volume = pct;
   audio.volume = volume;
   volumeFill.style.width = `${volume * 100}%`;
-  volumePct.textContent = `${Math.round(volume * 100)}%`;
-  volumeIcon.textContent = volume === 0 ? "🔇" : volume < 0.5 ? "🔉" : "🔊";
 }
 
 function init() {
@@ -211,8 +227,16 @@ function init() {
     currentTimeEl.textContent = formatTime(audio.currentTime);
   });
   audio.addEventListener("ended", next);
-  audio.addEventListener("play", () => { isPlaying = true; btnPlay.textContent = "⏸"; });
-  audio.addEventListener("pause", () => { isPlaying = false; btnPlay.textContent = "▶"; });
+  audio.addEventListener("play", () => { 
+    isPlaying = true; 
+    playIcon.style.display = "none";
+    pauseIcon.style.display = "block";
+  });
+  audio.addEventListener("pause", () => { 
+    isPlaying = false; 
+    playIcon.style.display = "block";
+    pauseIcon.style.display = "none";
+  });
 }
 
 window.addEventListener("DOMContentLoaded", init);

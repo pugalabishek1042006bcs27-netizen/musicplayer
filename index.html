@@ -3,59 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Songapp</title>
+  <title>Songapp - Modern Music Player</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="app" class="app">
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <h1>Songapp</h1>
-      </div>
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search songs..." />
-      </div>
-      <div class="song-count" id="songCount">0 songs</div>
-      <div class="playlist" id="playlist"></div>
-    </aside>
+  <div class="app-container">
+    <div class="main-view">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h1>Songapp</h1>
+        </div>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search songs..." />
+        </div>
+        <div class="song-count" id="songCount">0 songs</div>
+        <div class="playlist" id="playlist"></div>
+      </aside>
 
-    <main class="player">
-      <div class="album-art" id="albumArt">
-        <div class="album-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
-            <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
-          </svg>
+      <main class="content">
+        <div class="now-playing-large">
+          <div class="album-art" id="albumArt">
+            <div class="album-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+              </svg>
+            </div>
+          </div>
+          <div class="song-details">
+            <h2 id="songTitle">Select a song</h2>
+            <p id="songArtist">Choose from the playlist</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <footer class="player-bar">
+      <div class="player-left">
+        <!-- Optional: Small album art and info can go here for "standard" look -->
+        <div class="mini-info">
+           <div class="mini-art" id="miniArt"></div>
+           <div class="mini-text">
+             <div class="mini-title" id="miniTitle"></div>
+             <div class="mini-artist" id="miniArtist"></div>
+           </div>
         </div>
       </div>
 
-      <div class="song-info">
-        <h2 class="song-title" id="songTitle">Select a song</h2>
-        <p class="song-artist" id="songArtist">Choose from the playlist</p>
-      </div>
-
-      <div class="progress-container">
-        <span class="time" id="currentTime">0:00</span>
-        <div class="progress-track" id="progressTrack">
-          <div class="progress-fill" id="progressFill"></div>
+      <div class="player-center">
+        <div class="player-controls">
+          <button id="btnPrev" title="Previous">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+          </button>
+          <button id="btnPlay" class="play-btn" title="Play/Pause">
+            <svg id="playIcon" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="pauseIcon" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <button id="btnNext" title="Next">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
         </div>
-        <span class="time" id="totalTime">0:00</span>
-      </div>
-
-      <div class="controls">
-        <button id="btnPrev" aria-label="Previous">⏮</button>
-        <button id="btnPlay" aria-label="Play/pause">▶</button>
-        <button id="btnNext" aria-label="Next">⏭</button>
-      </div>
-
-      <div class="volume-row">
-        <span id="volumeIcon">🔊</span>
-        <div class="volume-track" id="volumeTrack">
-          <div class="volume-fill" id="volumeFill"></div>
+        <div class="playback-bar">
+          <span class="time" id="currentTime">0:00</span>
+          <div class="progress-track" id="progressTrack">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <span class="time" id="totalTime">0:00</span>
         </div>
-        <span class="volume-pct" id="volumePct">100%</span>
       </div>
-    </main>
+
+      <div class="player-right">
+        <div class="volume-control">
+          <button id="btnMute">
+            <svg id="volIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          </button>
+          <div class="volume-track" id="volumeTrack">
+            <div class="volume-fill" id="volumeFill"></div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <audio id="audioPlayer" preload="auto"></audio>
